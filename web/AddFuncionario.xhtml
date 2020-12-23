@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"      
+      xmlns:p="http://primefaces.org/ui" 
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+      <h:head>
+        <title>Cadastrar Funcionário</title>
+    </h:head>
+    <h:body>
+        <h3>Responsive (PrimeFlex, p-align-baseline)</h3>
+        <p:panelGrid columns="4" layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass = "p-align-baseline ui-fluid">
+            <p:outputLabel for="nome" value="Nome" />
+            <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}"/>
+
+            <p:outputLabel for="cpf" value="CPF" />
+            <p:inputMask id="cpf" mask = "999.999.999-99" value="#{funcionarioBean.funcionario.cpf}"/>
+
+            <h:outputText value="Basic: " />
+            <p:password id="nonFeedback" value="#{funcionarioBean.funcionario.senha}" />
+
+            <p:outputLabel for="celular" value="Telefone" />
+            <p:inputMask id="celular" mask="(99)99999-9999" value="#{funcionarioBean.funcionario.celular}"/>
+
+            <p:outputLabel for="cargo" value="Cargo" />
+            <p:selectOneMenu id="cargo" value="#{funcionarioBean.funcionario.cargo}">
+                <f:selectItem itemLabel="Selecione um" itemValue="" />
+                <f:selectItem itemLabel="Hair Stylist" itemValue="Hair Stylist" />
+                <f:selectItem itemLabel="Manicure" itemValue="Manicure" />
+                <f:selectItem itemLabel="Depiladora" itemValue="Depiladora" />
+                <f:selectItem itemLabel="Massagista" itemValue="Massagista" />
+            </p:selectOneMenu>
+
+            <p:outputLabel for="salario" value="Salário" />
+            <p:inputText id="salario" value="#{funcionarioBean.funcionario.salario}"/>
+
+            <p:commandButton value="salvar" action="#{funcionarioBean.salvar}"/>
+        </p:panelGrid>
+    </h:body>
+</html>
+
