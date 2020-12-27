@@ -12,10 +12,7 @@ public class FuncionarioBean {
     private Funcionario funcionario;
 
     public FuncionarioBean() {
-    }
-
-    public FuncionarioBean(Funcionario funcionario) {
-        this.funcionario = funcionario;
+        this.funcionario = new Funcionario();
     }
 
     public Funcionario getFuncionario() {
@@ -25,9 +22,9 @@ public class FuncionarioBean {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-
+    
     public String salvar(){
         new FuncionarioDAO().salvar(this.funcionario);
-        return "index.xhtml";
+        return "sidemenu.xhtml";
     }
 }

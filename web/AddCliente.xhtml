@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastrar Cliente</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="4" layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass="p-align-baseline ui-fluid">
+                <p:outputLabel for="nome" value="Nome: " />
+                <p:inputText id="nome" value="#{clienteBean.cliente.nome}"/>
+
+                <p:outputLabel for="celular" value="Celular: " />
+                <p:inputMask id="celular" value="#{clienteBean.cliente.celular}" mask="(99) 99999-9999"/>
+
+                <p:outputLabel for="cpf" value="CPF: " />
+                <p:inputMask id="cpf" value="#{clienteBean.cliente.cpf}" mask="999.999.999-99"/>
+
+                <h:outputText value="Senha: " />
+                <p:password id="senha" value="#{clienteBean.cliente.senha}" feedback="true" inline="true" />
+
+                <h:outputText value="Status: " />
+                <p:selectOneButton value="#{clienteBean.cliente.situacao}">
+                    <f:selectItem itemLabel="Habilitado(a)" itemValue="Habilitado" />
+                    <f:selectItem itemLabel="Suspenso(a)" itemValue="Suspenso(a)" />
+                </p:selectOneButton>
+                
+                <p:commandButton value="Salvar" action="#{clienteBean.salvar}"/>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
