@@ -6,15 +6,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
 /**
  *
  * @author Gabs
  */
+@Entity
 public class Funcionario extends Pessoa implements Serializable{
-   
+    @Id 
+    @GeneratedValue
+    private int id;
     private String cargo;
     private double salario;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCargo() {
         return cargo;
@@ -34,9 +44,7 @@ public class Funcionario extends Pessoa implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.cargo);
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.salario) ^ (Double.doubleToLongBits(this.salario) >>> 32));
+        int hash = 3;
         return hash;
     }
 
@@ -52,6 +60,9 @@ public class Funcionario extends Pessoa implements Serializable{
             return false;
         }
         final Funcionario other = (Funcionario) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         if (Double.doubleToLongBits(this.salario) != Double.doubleToLongBits(other.salario)) {
             return false;
         }
@@ -60,10 +71,11 @@ public class Funcionario extends Pessoa implements Serializable{
         }
         return true;
     }
- 
-    /*
+    
     public String toString(){
-	return id+ " - " + nome + " - " + cpf + " - " + cargo;
+	return id+ " - " + getNome() + " - " + getCpf() + " - " + getCargo();
 }
-*/
+
+    
 }
+

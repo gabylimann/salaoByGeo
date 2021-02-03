@@ -12,6 +12,14 @@
         <link href="jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet"/>
     </h:head>
     <h:body>
+    
+        <div class="card">
+            
+            <h:form>
+                <p:growl id="messages"/>
+                
+            </h:form>
+        </div>
         
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <div style="text-align:center;">
@@ -27,10 +35,9 @@
                 </p:growl>
 
                 <p:panelMenu style="width:300px">
-                    <p:submenu label="Painel de Controle" icon="pi pi-home" />
                     <p:submenu label="Gerenciar Clientes">
-                        <p:menuitem value="Cadastrar" action="#{menuView.save}" icon="pi pi-save" />
-                        <p:menuitem value="Consultar" action="#{menuView.update}"  icon="pi pi-refresh" />
+                        <p:menuitem value="Cadastrar" url="addCliente.xhtml" icon="pi pi-save" />
+                        <p:menuitem value="Consultar" url="listarCliente"  icon="pi pi-refresh" />
                     </p:submenu>
                     <p:submenu label="Gerenciar Funcionários">
                         <p:menuitem value="Cadastrar" action="#{menuView.save}" icon="pi pi-save" />
@@ -49,12 +56,12 @@
                     
                     <p:separator />
                     
+                
+                    
                 </p:panelMenu>
             </h:form>
-            
         </p:sidebar>
         
-        <p:commandButton icon="ui-icon ui-icon-grip-solid-horizontal" oncomplete="PF('sidebar1').show()" />
- 
+        
     </h:body>
 </html>

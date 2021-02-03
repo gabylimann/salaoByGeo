@@ -1,6 +1,4 @@
 package br.com.salao.vo;
-import  br.com.salao.vo.Pessoa;
-
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -10,8 +8,18 @@ import javax.persistence.Id;
 
 @Entity
 public class Cliente extends Pessoa implements Serializable{
-    
+    @Id
+    @GeneratedValue
+    private int id;
     private String situacao;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSituacao() {
         return situacao;
@@ -23,8 +31,7 @@ public class Cliente extends Pessoa implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.situacao);
+        int hash = 3;
         return hash;
     }
 
@@ -40,15 +47,19 @@ public class Cliente extends Pessoa implements Serializable{
             return false;
         }
         final Cliente other = (Cliente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         if (!Objects.equals(this.situacao, other.situacao)) {
             return false;
         }
         return true;
     }
-    
-    
-         //** public String toString(){
-	//**return id+ " - " + nome + " - " + cpf;
-    //**}
+
+  public String toString(){
+	return id + "-" + getNome() + "-" + getCpf();
 }
+    
+}
+
 

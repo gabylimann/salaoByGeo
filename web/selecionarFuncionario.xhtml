@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="sidemenu.xhtml" />
+        <h2>Marcar horário para funcionario</h2>
+        <h:form>
+            <p:dataTable var="funcionario" value="#{funcionarioBean.listarFuncionariosOk()}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} clientes"
+                         rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                         selectionMode="single"
+                         selection="#{funcionarioBean.funcionarioParaAlugar}" rowKey="#{funcionario.id}"
+                         >
+
+                <p:column headerText="Nome">
+                    <h:outputText value="#{funcionario.nome}" />
+                </p:column>
+
+                <p:column headerText="CPF">
+                    <h:outputText value="#{funcionario.cpf}" />
+                </p:column>
+
+                <p:column headerText="Cargo">
+                    <h:outputText value="#{funcionario.cargo}" />
+                </p:column>
+
+            </p:dataTable>
+            <p:commandButton value="Selecionar" action="#{clienteBean.prepararParaMarcar()}" />
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="sidemenu.xhtml" />
+        <h2>Marcar horário para cliente</h2>
+        <h:form>
+            <p:dataTable var="cliente" value="#{clienteBean.listarClientesOk()}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} clientes"
+                         rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"
+                         selectionMode="single"
+                         selection="#{clienteBean.clienteParaAlugar}" rowKey="#{cliente.id}"
+                         >
+
+                <p:column headerText="Nome">
+                    <h:outputText value="#{cliente.nome}" />
+                </p:column>
+
+                <p:column headerText="CPF">
+                    <h:outputText value="#{cliente.cpf}" />
+                </p:column>
+
+                <p:column headerText="Celular">
+                    <h:outputText value="#{cliente.celular}" />
+                </p:column>
+
+            </p:dataTable>
+            <p:commandButton value="Selecionar" action="#{clienteBean.prepararParaMarcar()}" />
+        </h:form>
+    </h:body>
+</html>
